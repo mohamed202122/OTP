@@ -55,13 +55,12 @@ public class OTP {
                 for (int j = 0; j < arr.length - 1; j++) {
                     if (i >= MSGS[j].length() / 2) {
                         p[j] = ' ';
-                        System.out.println("plain[" + j + "] : " + plain[j] + " ");
+                        System.out.println("plain[" + j + "] : " + plain[j] + p[j]);
                         continue;
                     }
                     int guess_xor_msgs = (arr[10][i] ^ arr[j][i]) ^ guess;
                     p[j] = (char) guess_xor_msgs;
                     System.out.println("plain[" + j + "] : " + plain[j] + p[j]);
-//                    System.out.println("p[" + j + "] = " + p[j]);
                 }
                 System.out.println("------------------- " + i + " --------------------------");
                 boolean flag = true, flag2 = true;
