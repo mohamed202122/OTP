@@ -34,11 +34,6 @@ public class OTP2 {
         Scanner sc = new Scanner(System.in);
         int arr[][] = hex();
 
-        String plain[] = new String[10];
-        for (int i = 0; i < 10; i++) {
-            plain[i] = "";
-        }
-
         String target = "";
         char possible[][] = new char[arr[10].length][95];
         char possible2[][] = new char[arr[10].length][65];
@@ -79,21 +74,8 @@ public class OTP2 {
             } else if (possible[i][0] != '\0') {
                 target += possible[i][0];
             }
-
-            for (int j = 0; j < 10; j++) {
-                if (i >= MSGS[j].length() / 2) {
-                    plain[j] += ' ';
-                    continue;
-                }
-                plain[j] += (char) ((arr[10][i] ^ arr[j][i]) ^ target.charAt(i));
-            }
-
         }
         System.out.println("plaintext: " + target);
-//        System.out.println("------------------------------------------------");
-//        for (int j = 0; j < arr.length - 1; j++) {
-//            System.out.println("plain[" + j + "]: " + plain[j]);
-//        }
 
         while (true) {
             try {
@@ -131,6 +113,7 @@ public class OTP2 {
                 }
 
                 System.out.println("select your character: ");
+                sc.useDelimiter("\n");
                 char choose = sc.next().charAt(0);
                 target = target.substring(0, index) + choose + target.substring(index + 1, 92);
                 System.out.println("plaintext is: " + target);
